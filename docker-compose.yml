@@ -1,0 +1,17 @@
+networks:
+  default:
+    name: selfhost
+    driver: bridge
+    external: true
+services:
+  telegram_bot:
+    container_name: reddit-summarizer
+    build: .
+    # container_name: teleseerr_bot # Optional: Compose generates a unique name
+    env_file:
+      - .env # Load environment variables from .env file
+    restart: unless-stopped
+    labels:
+      com.centurylinklabs.watchtower.enable: false
+    ports:
+      - "8501:8501"

@@ -10,7 +10,6 @@ import streamlit as st
 
 # Configuration and utilities
 from config import ConfigVars, with_config
-from debug_tools import Debugger
 from log_tools import Logger
 
 # UI components
@@ -32,16 +31,6 @@ def main(config: ConfigVars) -> None:
 
     # Set up the page configuration before rendering the layout
     st.set_page_config(page_title=config.APP_TITLE, page_icon="🤖", layout="wide")
-
-    # Set up the debugger if enabled in the configuration
-    Debugger.setup_debugpy(
-        st,
-        app_logger,
-        flag=config.ATTACH_DEBUGGER,
-        wait_for_client=config.WAIT_FOR_CLIENT,
-        host=config.DEBUGPY_HOST,
-        port=config.DEFAULT_DEBUG_PORT,
-    )
 
     # Render the main layout of the application
     render_layout(app_logger=app_logger)

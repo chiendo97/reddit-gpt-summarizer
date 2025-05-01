@@ -1,17 +1,15 @@
 """This module contains the settings UI for the app."""
 
 import streamlit as st
-from config import (
-    MODELS,
-    ConfigVars,
-)
+from config import MODELS, ConfigVars
 from data_types.summary import GenerateSettings
+from streamlit.delta_generator import DeltaGenerator
 from utils.streamlit_decorators import expander_decorator
 
 config = ConfigVars()
 
 
-def model_selection(col) -> tuple[str, int, int, int, int]:
+def model_selection(col: DeltaGenerator) -> tuple[str, int, int, int, int]:
     """Render the model selection and return the selected model and settings."""
 
     models = MODELS
