@@ -4,7 +4,7 @@ networks:
     driver: bridge
     external: true
 services:
-  telegram_bot:
+  reddit-summarizer:
     container_name: reddit-summarizer
     build: .
     # container_name: teleseerr_bot # Optional: Compose generates a unique name
